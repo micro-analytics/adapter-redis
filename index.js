@@ -9,7 +9,7 @@ function get(key) {
 }
 
 function put(key, value) {
-  return redis.hset(HASH_KEY, key, set);
+  return redis.hset(HASH_KEY, key, value);
 }
 
 function getAll(options) {
