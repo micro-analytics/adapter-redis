@@ -1,0 +1,1 @@
+# micro-analytics-adapter-redis
