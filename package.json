@@ -1,0 +1,22 @@
+{
+  "name": "micro-analytics-adapter-redis",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/relekang/micro-analytics-adapter-redis.git"
+  },
+  "author": "Rolf Erik Lekang <me@rolflekang.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/relekang/micro-analytics-adapter-redis/issues"
+  },
+  "homepage": "https://github.com/relekang/micro-analytics-adapter-redis#readme",
+  "dependencies": {
+    "ioredis": "^2.5.0"
+  }
+}
