@@ -31,9 +31,14 @@ function has(key) {
   return redis.hexists(HASH_KEY, key);
 }
 
+function keys() {
+  return redis.hkeys(HASH_KEY);
+}
+
 module.exports = {
   get: get,
   put: put,
   has: has,
+  keys: keys,
   getAll: getAll,
 }
