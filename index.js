@@ -5,8 +5,7 @@ var redis = new Redis();
 var HASH_KEY = 'micro-analytics';
 
 function get(key) {
-  return redis.hget(HASH_KEY, key)
-    .then((value) => JSON.parse(value));
+  return redis.hget(HASH_KEY, key).then(value => JSON.parse(value));
 }
 
 function put(key, value) {
@@ -14,16 +13,15 @@ function put(key, value) {
 }
 
 function getAll(options) {
-  return redis.hgetall(HASH_KEY)
-    .then((value) =>
-      Object.keys(value)
-      .reduce((lastValue, item) =>
-        Object.assign(
-          {},
-          lastValue,
-          { [item]: JSON.parse(value[item])}
-        )
-      )
+  return redis
+    .hgetall(HASH_KEY)
+    .then(
+      value =>
+        Object
+          .keys(value)
+          .reduce(
+            (lastValue, item) => Object.assign({}, lastValue, { [item]: JSON.parse(value[item]) }),
+          ),
     );
 }
 
@@ -35,10 +33,4 @@ function keys() {
   return redis.hkeys(HASH_KEY);
 }
 
-module.exports = {
-  get: get,
-  put: put,
-  has: has,
-  keys: keys,
-  getAll: getAll,
-}
+module.exports = { get: get, put: put, has: has, keys: keys, getAll: getAll };

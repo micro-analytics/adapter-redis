@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "prettier --write --flow-parser --single-quote --trailing-comma --print-width 100 **.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "homepage": "https://github.com/relekang/micro-analytics-adapter-redis#readme",
   "dependencies": {
     "ioredis": "^2.5.0"
+  },
+  "devDependencies": {
+    "prettier": "^0.0.5"
   }
 }
