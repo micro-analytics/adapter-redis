@@ -1,8 +1,8 @@
-var Redis = require('ioredis');
+const Redis = require('ioredis');
 
-var redis = new Redis();
+const redis = new Redis();
 
-var HASH_KEY = 'micro-analytics';
+const HASH_KEY = process.env.MAA_REDIS_HASH_KEY || 'micro-analytics';
 
 function get(key) {
   return redis.hget(HASH_KEY, key).then(value => JSON.parse(value));
