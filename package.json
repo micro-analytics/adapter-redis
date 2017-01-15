@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "lint": "prettier --write --flow-parser --single-quote --trailing-comma --print-width 100 **.js",
+    "lint": "prettier --write --flow-parser --single-quote --print-width 100 **.js",
     "release": "standard-version"
   },
   "repository": {
