@@ -10,3 +10,6 @@ DB_ADAPTER=redis micro-analytics
 ```
 
 and open [localhost:3000](https://localhost:3000).
+
+[Redis]: https://redis.io
+[micro-analytics]: https://github.com/micro-analytics
