@@ -20,7 +20,8 @@ function getAll(options) {
         Object
           .keys(value)
           .reduce(
-            (lastValue, item) => Object.assign({}, lastValue, { [item]: JSON.parse(value[item]) })
+            (lastValue, item) => Object.assign({}, lastValue, { [item]: JSON.parse(value[item]) }),
+            {}
           )
     );
 }
