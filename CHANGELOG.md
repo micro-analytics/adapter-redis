@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/relekang/micro-analytics-adapter-redis/compare/v0.1.2...v0.2.0) (2017-01-21)
+
+
+### Bug Fixes
+
+* Add missing initialValue to reduce ([09d7074](https://github.com/relekang/micro-analytics-adapter-redis/commit/09d7074))
+
+
+### Features
+
+* Add configuration of hash key ([#9](https://github.com/relekang/micro-analytics-adapter-redis/issues/9)) ([61f3538](https://github.com/relekang/micro-analytics-adapter-redis/commit/61f3538)), closes [#3](https://github.com/relekang/micro-analytics-adapter-redis/issues/3)
+
+
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/relekang/micro-analytics-adapter-redis/compare/v0.1.1...v0.1.2) (2017-01-15)
 
