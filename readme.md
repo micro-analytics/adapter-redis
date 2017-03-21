@@ -16,6 +16,25 @@ and open [localhost:3000](https://localhost:3000).
 
 ## Configuration
 
+### Database
+
+This adapter allows you to provide a database configuration string
+as an environment variable `MAA_REDIS_DB_CONFIG` in the form of
+either a JSON string or a plaintext connection string which will
+be provided to the ioredis' (constructor). Here are two examples:
+
+Either provide a JSON string
+
+```
+DB_ADAPTER=redis MAA_REDIS_DB_CONFIG='{"host":"myhost.cloud.redislabs.com","port":16244}' micro-analytics
+```
+
+or a dsn-like connection string
+
+```
+DB_ADAPTER=redis MAA_REDIS_DB_CONFIG=myhost.cloud.redislabs.com:16244 micro-analytics
+```
+
 ### Hash key
 
 This adapter uses redis hashes to store the analytics data. The key
