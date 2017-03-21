@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "node test.js",
     "lint": "prettier --write --flow-parser --single-quote --print-width 100 **.js",
     "release": "standard-version"
   },
@@ -22,6 +22,7 @@
     "ioredis": "^2.5.0"
   },
   "devDependencies": {
+    "micro-analytics-cli": "^1.2.0-7",
     "prettier": "^0.0.5",
     "standard-version": "^4.0.0"
   }
