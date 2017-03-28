@@ -39,11 +39,18 @@ function getAll(options) {
 }
 
 function has(key) {
-  return redis.hexists(HASH_KEY, key);
+  return redis.hexists(HASH_KEY, key)
+    .then(function (result) {
+      return !!result;
+    });
 }
 
 function keys() {
   return redis.hkeys(HASH_KEY);
 }
 
-module.exports = { get: get, put: put, has: has, keys: keys, getAll: getAll };
+function close() {
+  return redis.disconnect();
+}
+
+module.exports = { get: get, put: put, has: has, keys: keys, getAll: getAll, close: close };
