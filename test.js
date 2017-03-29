@@ -1,5 +1,5 @@
 const Redis = require('ioredis')
-const adapterTests = require('micro-analytics-cli/dist/adapterTests')
+const test = require('micro-analytics-cli/adapter-tests/unit-tests')
 const path = require('path')
 
 const DB_CONFIG_RAW = process.env.MAA_REDIS_DB_CONFIG;
@@ -19,7 +19,7 @@ const db = new Redis(DB_CONFIG);
 const HASH_KEY = process.env.MAA_REDIS_HASH_KEY || 'micro-analytics';
 
 
-adapterTests({
+test({
   name: 'redis',
   modulePath: path.resolve(__dirname, './index.js'),
   beforeEach: async () => {
