@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "jest": "^19.0.2",
-    "micro-analytics-cli": "relekang/micro-analytics#adapter-tests",
+    "micro-analytics-cli": "1.2.0-10",
     "prettier": "^0.0.5",
     "standard-version": "^4.0.0"
   }
