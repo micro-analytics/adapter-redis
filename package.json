@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/relekang/micro-analytics-adapter-redis#readme",
   "dependencies": {
+    "escape-regex": "^1.0.7",
     "ioredis": "^2.5.0"
   },
   "devDependencies": {
