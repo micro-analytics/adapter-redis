@@ -1,5 +1,5 @@
 const Redis = require('ioredis');
-const test = require('micro-analytics-cli/adapter-tests/unit-tests');
+const test = require('micro-analytics-adapter-utils/unit-tests');
 const path = require('path');
 
 const DB_CONFIG_RAW = process.env.MAA_REDIS_DB_CONFIG;
