@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/relekang/micro-analytics-adapter-redis/compare/v0.3.1...v0.4.0) (2017-06-26)
+
+
+### Bug Fixes
+
+* Add support for cli options ([795544c](https://github.com/relekang/micro-analytics-adapter-redis/commit/795544c))
+* Use filtering from adapter-utils ([7c92393](https://github.com/relekang/micro-analytics-adapter-redis/commit/7c92393))
+
+
+### Features
+
+* Add support for filtering ([#15](https://github.com/relekang/micro-analytics-adapter-redis/issues/15)) ([835a580](https://github.com/relekang/micro-analytics-adapter-redis/commit/835a580)), closes [#14](https://github.com/relekang/micro-analytics-adapter-redis/issues/14)
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/relekang/micro-analytics-adapter-redis/compare/v0.3.0...v0.3.1) (2017-04-03)
 
