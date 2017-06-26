@@ -1,5 +1,6 @@
 const Redis = require('ioredis');
 const escapeRegexp = require('escape-regex');
+const { filterPaths, filterViews } = require('micro-analytics-adapter-utils');
 
 const DB_CONFIG_RAW = process.env.MAA_REDIS_DB_CONFIG;
 
@@ -17,28 +18,6 @@ const redis = new Redis(DB_CONFIG);
 
 const HASH_KEY = process.env.MAA_REDIS_HASH_KEY || 'micro-analytics';
 
-function keyRegex(str) {
-  str = str.split('*').map(s => escapeRegexp(s)).join('*');
-  return new RegExp('^' + str.replace('*', '.*'));
-}
-
-function filterPaths(options) {
-  return key =>
-    options.ignoreWildcard
-      ? key.startsWith(options.pathname)
-      : key.match(keyRegex(options.pathname));
-}
-
-function filterViews(views, options) {
-  return (views || []).filter(view => {
-    if (options && options.before && view.time > options.before)
-      return false;
-    if (options && options.after && view.time < options.after)
-      return false;
-    return true;
-  });
-}
-
 function get(key, options) {
   return redis
     .hget(HASH_KEY, key)
@@ -52,7 +31,7 @@ function put(key, value) {
 
 function getAll(options) {
   return redis.hgetall(HASH_KEY).then(
-    value => Object.keys(value).filter(filterPaths(options)).reduce((lastValue, item) => {
+    value => filterPaths(Object.keys(value), options).reduce((lastValue, item) => {
       const parsed = JSON.parse(value[item]);
       return Object.assign({}, lastValue, {
         [item]: Object.assign({}, parsed, { views: filterViews(parsed.views, options) })
