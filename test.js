@@ -1,30 +1,17 @@
-const Redis = require('ioredis');
 const test = require('micro-analytics-adapter-utils/unit-tests');
 const path = require('path');
 
-const DB_CONFIG_RAW = process.env.MAA_REDIS_DB_CONFIG;
+const adapter = require('./index');
 
-let DB_CONFIG;
-
-if (DB_CONFIG_RAW) {
-  try {
-    DB_CONFIG = JSON.parse(DB_CONFIG_RAW);
-  } catch (e) {
-    DB_CONFIG = DB_CONFIG_RAW;
-  }
-}
-
-const db = new Redis(DB_CONFIG);
-
-const HASH_KEY = process.env.MAA_REDIS_HASH_KEY || 'micro-analytics';
+const dbConfig = process.env.MAA_REDIS_DB_CONFIG || 'redis://localhost:6379';
+const hashKey = process.env.MAA_REDIS_HASH_KEY || 'micro-analytics';
 
 test({
   name: 'redis',
   modulePath: path.resolve(__dirname, './index.js'),
   beforeEach: async () => {
-    await db.flushall();
+    adapter.init({ dbConfig, hashKey });
+    await adapter.clear();
   },
-  afterAll: async adapter => {
-    await db.disconnect();
-  }
+  afterAll: () => db.close()
 });
