@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/relekang/micro-analytics-adapter-redis/compare/v0.4.0...v1.0.0) (2017-06-29)
+
+
+### Features
+
+* Add support for realtime events with pub/sub ([96517e5](https://github.com/relekang/micro-analytics-adapter-redis/commit/96517e5)), closes [#13](https://github.com/relekang/micro-analytics-adapter-redis/issues/13)
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/relekang/micro-analytics-adapter-redis/compare/v0.3.1...v0.4.0) (2017-06-26)
 
