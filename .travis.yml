@@ -6,7 +6,7 @@ node_js:
 matrix:
   allow_failures:
     - node_js: 6
-script: npm run test
+script: npm run test -- --forceExit
 cache: yarn
 services:
   - redis-server
