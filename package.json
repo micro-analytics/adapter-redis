@@ -21,7 +21,8 @@
   "dependencies": {
     "escape-regex": "^1.0.7",
     "ioredis": "^2.5.0",
-    "micro-analytics-adapter-utils": "^1.0.1"
+    "micro-analytics-adapter-utils": "^1.0.1",
+    "zen-observable": "^0.5.2"
   },
   "devDependencies": {
     "jest": "^20.0.4",

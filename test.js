@@ -13,5 +13,7 @@ test({
     adapter.init({ dbConfig, hashKey });
     await adapter.clear();
   },
-  afterAll: () => db.close()
+  afterEach: () => {
+    return adapter.close();
+  }
 });

@@ -1,6 +1,7 @@
 const Redis = require('ioredis');
 const escapeRegexp = require('escape-regex');
 const { filterPaths, filterViews } = require('micro-analytics-adapter-utils');
+const Observable = require('zen-observable');
 
 const options = [
   {
@@ -17,6 +18,8 @@ const options = [
 
 let hashKey;
 let redis;
+let observable;
+let subscriber;
 function init(options) {
   let dbConfig;
   try {
@@ -26,6 +29,34 @@ function init(options) {
   }
   hashKey = options.hashKey;
   redis = new Redis(dbConfig);
+  subscriber = new Redis(dbConfig);
+
+  let handlers = [];
+  observable = new Observable(observer => {
+    handlers.push(data => {
+      observer.next(data);
+    });
+
+    let index = handlers.length;
+    return () => {
+      handlers = [ ...handlers.slice(0, index), ...handlers.slice(index) ];
+    };
+  });
+
+  subscriber.subscribe('views', error => {
+    if (error) {
+      throw error;
+    }
+  });
+
+  subscriber.on('message', (channel, message) => {
+    if (channel === 'views') {
+      const [ key, value ] = JSON.parse(message);
+      handlers.forEach(handler => {
+        handler({ key, value });
+      });
+    }
+  });
 }
 
 function get(key, options) {
@@ -36,6 +67,7 @@ function get(key, options) {
 }
 
 function put(key, value) {
+  redis.publish('views', JSON.stringify([ key, value ]));
   return redis.hset(hashKey, key, JSON.stringify(value));
 }
 
@@ -60,8 +92,12 @@ function keys() {
   return redis.hkeys(hashKey);
 }
 
-function close() {
-  return redis.disconnect();
+function subscribe(cb) {
+  return observable.subscribe(cb);
+}
+
+async function close() {
+  await Promise.all([redis.disconnect(), subscriber.disconnect()])
 }
 
 function clear() {
@@ -77,5 +113,6 @@ module.exports = {
   init: init,
   keys: keys,
   options: options,
-  put: put
+  put: put,
+  subscribe: subscribe
 };
